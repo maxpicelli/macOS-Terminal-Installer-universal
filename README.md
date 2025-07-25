@@ -1,2 +1,60 @@
 # macOS-Terminal-Installer-universal
 Safe and universal macOS installer using Terminal
+
+
+# 🚀 Universal macOS Installer via Terminal
+
+This project provides a **safe and universal method** to install macOS on any APFS volume using the Terminal — compatible with all Apple official installers like Sequoia, Tahoe, Ventura, and more.
+
+## ▶️ Video Tutorial
+
+Watch the full tutorial video here:  
+[![Watch on YouTube](https://img.youtube.com/vi/9xOn7dbi47I/0.jpg)](https://youtu.be/9xOn7dbi47I)
+
+Or open directly: [https://youtu.be/9xOn7dbi47I](https://youtu.be/9xOn7dbi47I)
+
+## ✅ Features
+
+- Works with **any Install macOS .app**
+- Avoids formatting or erasing your current system
+- Supports volume renaming
+- Uses `startosinstall` safely without `--eraseinstall`
+- Protects against installing on the current running system
+- Includes a 60-second reboot delay for safety
+
+## 📜 How to Use
+
+Use this universal Terminal command to safely install macOS:
+
+```
+echo "📦 Drag the macOS installer app here and press Enter:"; read installer_app; if [ ! -f "$installer_app/Contents/Resources/startosinstall" ]; then echo "❌ ERROR: Invalid macOS installer. Make sure it's a valid '.app' with startosinstall inside."; exit 1; fi; echo "🔹 Drag the target volume here and press Enter:"; read target_volume; echo "📝 Enter the new name you want to give the volume (or press Enter to keep the current name):"; read custom_name; current_root=$(df / | tail -1 | awk '{print $1}'); dra...
+```
+
+> 📌 Copy and paste this into Terminal. It works on Intel Macs and Hackintosh (with SIP disabled). Tested on Sequoia 15.5, Tahoe Beta 4, and Ventura.
+
+## 📁 Full Tutorial
+
+Check the full tutorial and step-by-step guide in:
+- [`Tutorial_Instalador_macOS_Universal_PT.md`](Tutorial_Instalador_macOS_Universal_PT.md)
+
+## 🛡 System Integrity Protection (SIP)
+
+**Disable SIP if you're using Hackintosh or a modified system**, otherwise the installer may ignore your selected volume and install over the current one.
+
+To disable SIP:
+1. Boot into **Recovery Mode**
+2. Open Terminal and run:
+    ```
+    csrutil disable
+    ```
+3. Restart
+
+## 💡 Want to Contribute?
+
+Feel free to fork, improve or translate this project. Pull requests are welcome!
+
+---
+
+© 2025 – This script is free to use and share. Use responsibly.
+
+
