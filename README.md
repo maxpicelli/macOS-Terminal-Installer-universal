@@ -1,7 +1,3 @@
-# macOS-Terminal-Installer-universal
-Safe and universal macOS installer using Terminal
-
-
 # 🚀 Universal macOS Installer via Terminal
 
 This project provides a **safe and universal method** to install macOS on any APFS volume using the Terminal — compatible with all Apple official installers like Sequoia, Tahoe, Ventura, and more.
@@ -34,8 +30,7 @@ echo "📦 Drag the macOS installer app here and press Enter:"; read installer_a
 
 ## 📁 Full Tutorial
 
-Check the full tutorial and step-by-step guide in:
-- [`Tutorial_Instalador_macOS_Universal_PT.md`](Tutorial_Instalador_macOS_Universal_PT.md)
+https://www.insanelymac.com/forum/topic/361410-safe-macos-installation-via-terminal-–-universal-script-sequoia-tahoe-ventura/ 
 
 ## 🛡 System Integrity Protection (SIP)
 
@@ -46,6 +41,8 @@ To disable SIP:
 2. Open Terminal and run:
     ```
     csrutil disable
+	csrutil authenticated-root disable
+	reboot
     ```
 3. Restart
 
@@ -56,5 +53,3 @@ Feel free to fork, improve or translate this project. Pull requests are welcome!
 ---
 
 © 2025 – This script is free to use and share. Use responsibly.
-
-
