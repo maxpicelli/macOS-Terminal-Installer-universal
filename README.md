@@ -23,7 +23,9 @@ Or open directly: [https://youtu.be/9xOn7dbi47I](https://youtu.be/9xOn7dbi47I)
 Use this universal Terminal command to safely install macOS:
 
 ```
-echo "📦 Drag the macOS installer app here and press Enter:"; read installer_app; if [ ! -f "$installer_app/Contents/Resources/startosinstall" ]; then echo "❌ ERROR: Invalid macOS installer. Make sure it's a valid '.app' with startosinstall inside."; exit 1; fi; echo "🔹 Drag the target volume here and press Enter:"; read target_volume; echo "📝 Enter the new name you want to give the volume (or press Enter to keep the current name):"; read custom_name; current_root=$(df / | tail -1 | awk '{print $1}'); dra...
+
+echo "📦 Drag the macOS installer app here and press Enter:"; read installer_app; if [ ! -f "$installer_app/Contents/Resources/startosinstall" ]; then echo "❌ ERROR: Invalid macOS installer. Make sure it's a valid '.app' with startosinstall inside."; exit 1; fi; echo "🔹 Drag the target volume here and press Enter:"; read target_volume; echo "📝 Enter the new name you want to give the volume (or press Enter to keep the current name):"; read custom_name; current_root=$(df / | tail -1 | awk '{print $1}'); dragged_device=$(df "$target_volume" 2>/dev/null | tail -1 | awk '{print $1}'); if [ "$dragged_device" = "$current_root" ]; then echo "❌ ERROR: You are trying to erase the volume where the current system is running. Operation cancelled."; exit 1; fi; original_mount_point="$target_volume"; if [ -n "$custom_name" ]; then diskutil rename "$target_volume" "$custom_name"; target_volume="$(dirname "$original_mount_point")/$custom_name"; fi; echo "✅ Final target volume confirmed: $target_volume"; sudo "$installer_app/Contents/Resources/startosinstall" --volume "$target_volume" --agreetolicense --nointeraction --passprompt --rebootdelay 60
+
 ```
 
 > 📌 Copy and paste this into Terminal. It works on Intel Macs and Hackintosh (with SIP disabled). Tested on Sequoia 15.5, Tahoe Beta 4, and Ventura.
